@@ -456,10 +456,7 @@ a {
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
+  gap: 16px;
 }
 
 .feature-card {
@@ -468,19 +465,12 @@ a {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   transition: background 0.2s;
 }
 
-.feature-card:hover { background: #fafaf8; }
-
-.feature-card:nth-child(3),
-.feature-card:nth-child(6) { border-right: none; }
-
-.feature-card:nth-child(4),
-.feature-card:nth-child(5),
-.feature-card:nth-child(6) { border-bottom: none; }
+.feature-card:hover .feature-icon-wrap { background: var(--border); }
 
 .feature-icon-wrap {
   width: 40px;
@@ -492,12 +482,27 @@ a {
   justify-content: center;
   font-size: 1.1rem;
   margin-bottom: 4px;
+  transition: background 0.2s;
 }
 
 .feature-title {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.feature-title::after {
+  content: '→';
+  font-weight: 400;
+  color: var(--text-light);
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover .feature-title::after {
+  transform: translateX(4px);
 }
 
 .feature-desc {
@@ -624,14 +629,43 @@ a {
    FOOTER
 ================================ */
 .footer {
-  padding: 36px 0;
+  padding: 56px 0 36px;
   border-top: 1px solid var(--border-light);
 }
 
-.footer-inner {
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 48px;
+}
+
+.footer-cols {
+  display: flex;
+  gap: 64px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col-heading {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
 }
 
 .footer-copy {
